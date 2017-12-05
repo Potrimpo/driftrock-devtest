@@ -13,3 +13,16 @@ describe("test single page requesets", () => {
     expect(resp.data).toHaveLength(10)
   })
 })
+
+describe("test multi-page requests", () => {
+  test("can fetch multiple pages", async function() {
+    const resp = await driftrock.pages('users', 5, 10)
+
+    expect(resp).toHaveLength(5)
+
+    for (let page of resp) {
+      expect(page).toHaveProperty('data')
+      expect(page.data).toHaveLength(10)
+    }
+  })
+})

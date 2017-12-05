@@ -10,6 +10,17 @@ const singlePage = (collection, page=1, pageSize=10) =>
     .then(resp => resp.json())
     .catch(console.error)
 
+const pages = (collection, pages=1, pageSize=10) => {
+  const promises = Array(pages)
+    .fill()
+    .map((_, index) => index)
+    .map(page => singlePage(collection, page, pageSize))
+
+  // run the page queries in parallel and await all results
+  return Promise.all(promises)
+}
+
 module.exports = {
-  singlePage
+  singlePage,
+  pages
 }
