@@ -1,0 +1,25 @@
+{
+  "name": "driftrock-devtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "node-fetch": "^1.7.3"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Potrimpo/driftrock-devtest.git"
+  },
+  "author": "lewis-knox-streader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Potrimpo/driftrock-devtest/issues"
+  },
+  "homepage": "https://github.com/Potrimpo/driftrock-devtest#readme"
+}
