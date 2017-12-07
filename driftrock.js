@@ -5,12 +5,20 @@ const endpoint = "https://driftrock-dev-test-2.herokuapp.com"
 const constructURI = (coll, page, pageSize) =>
   `${endpoint}/${coll}?page=${page}&per_page=${pageSize}`
 
-const singlePage = (collection, page=1, pageSize=10) =>
-  fetch(constructURI(collection, page, pageSize))
-    .then(resp => resp.json())
-    .catch(console.error)
 
-const pages = (collection, pages=1, pageSize=10) => {
+// type User = {...}
+// type Page = [User]
+
+// String -> Number -> Number -> Page
+const singlePage = (collection, page = 1, pageSize = 500) =>
+  fetch(constructURI(collection, page, pageSize))
+  .then(resp => resp.json())
+  .then(p => p.data)
+  .catch(console.error)
+
+
+// String -> Number -> Number -> [Page]
+const pages = (collection, pages = 1, pageSize = 500) => {
   const promises = Array(pages)
     .fill()
     .map((_, index) => index)
@@ -20,7 +28,7 @@ const pages = (collection, pages=1, pageSize=10) => {
   return Promise.all(promises)
 }
 
-module.exports = {
-  singlePage,
-  pages
-}
+  module.exports = {
+    singlePage,
+    pages
+  }
